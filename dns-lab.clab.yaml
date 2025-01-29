@@ -1,0 +1,20 @@
+name: dns-lab
+topology:
+  nodes:
+    dns-server:
+      image: ubuntu:latest
+      kind: linux
+      binds:
+        - ./bind:/etc/bind # Montar volume para configuração do BIND
+      exec:
+        - apt update
+        - apt install -y dnsutils iputils-ping bind9 iproute2 # Instalar ferramentas DNS no servidor
+    client:
+      image: ubuntu:latest
+      kind: linux
+      exec:
+        - apt update
+        - apt install -y dnsutils iputils-ping iproute2 # Instalar ferramentas DNS no cliente
+  links:
+    - endpoints: ["dns-server:eth1", "client:eth1"]
+
