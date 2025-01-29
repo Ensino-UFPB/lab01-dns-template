@@ -18,14 +18,16 @@ Temos um arquivo de topologia criado para o laboratório. Ao executá-lo o conta
 #### 1. Criar diretório **bind**
 
 Crie o diretório `bind` no mesmo local do arquivo de topologia (na raiz do projeto que você baixou)
-
+Dê permissão ao usuário docker
+```bash
+sudo chdown -R $USER:$USER bind/
+```
 #### 2. Iniciar o Containerlab
 
 Execute o laboratório com o comando:
 
 ```bash
 sudo containerlab deploy -t dns-lab.clab.yaml
-
 ```
 
 O comando criará:
